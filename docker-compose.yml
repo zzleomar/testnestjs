@@ -4,8 +4,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=${NODE_ENV}
     ports:
-      - "8000:8000"
+      - "${PORT}:${PORT}"
+    volumes:
+      - ./src:/app/src
   mongo:
     image: mongo
     ports:

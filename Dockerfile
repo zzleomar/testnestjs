@@ -20,4 +20,9 @@ ENV PORT 8000
 EXPOSE 8000
 
 # Comando para ejecutar la aplicación
-CMD ["npm", "run", "start:dev"]
+#CMD ["npm", "start"]
+CMD if [ "$NODE_ENV" = "production" ]; then \
+      npm start; \
+    else \
+      npm run start:dev; \
+    fi
